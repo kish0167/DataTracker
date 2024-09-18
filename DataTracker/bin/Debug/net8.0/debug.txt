@@ -1,0 +1,78 @@
+{
+    "root": {
+        "result": {
+            "items": [
+                {
+                    "object_id": "5624330",
+                    "object_name": "Case 695ST",
+                    "object_uid": "352625691129116",
+                    "state_number": "",
+                    "garage_number": "",
+                    "datetime": "2024-09-18 15:35:47",
+                    "odom_can": 0,
+                    "odom_virt": 0
+                },
+                {
+                    "object_id": "5762298",
+                    "object_name": "Газель АК 6826-2",
+                    "object_uid": "350317179076702",
+                    "state_number": null,
+                    "garage_number": null,
+                    "datetime": "2024-09-18 10:04:29",
+                    "odom_can": 189892.075,
+                    "odom_virt": 0
+                },
+                {
+                    "object_id": "5762293",
+                    "object_name": "ивеко АК 8561-2",
+                    "object_uid": "350612070073620",
+                    "state_number": null,
+                    "garage_number": null,
+                    "datetime": "2024-09-18 15:55:52",
+                    "odom_can": 569671,
+                    "odom_virt": 0
+                },
+                {
+                    "object_id": "5762296",
+                    "object_name": "Крафтер Аl 6488-2",
+                    "object_uid": "350612070073786",
+                    "state_number": null,
+                    "garage_number": null,
+                    "datetime": "2024-09-18 15:56:58",
+                    "odom_can": 393542.7,
+                    "odom_virt": 0
+                },
+                {
+                    "object_id": "5363680",
+                    "object_name": "МАЗ",
+                    "object_uid": "359632108850949",
+                    "state_number": "",
+                    "garage_number": "",
+                    "datetime": "2024-09-18 15:20:49",
+                    "odom_can": 166240.48,
+                    "odom_virt": 0
+                },
+                {
+                    "object_id": "5797342",
+                    "object_name": "Подъёмник  8829 ВК-2",
+                    "object_uid": "350612078833702",
+                    "state_number": null,
+                    "garage_number": null,
+                    "datetime": "2011-11-11 11:11:11",
+                    "odom_can": null,
+                    "odom_virt": 0
+                },
+                {
+                    "object_id": "5363679",
+                    "object_name": "Экскаватор",
+                    "object_uid": "359632108851012",
+                    "state_number": "",
+                    "garage_number": "",
+                    "datetime": "2011-11-11 11:11:11",
+                    "odom_can": null,
+                    "odom_virt": 0
+                }
+            ]
+        }
+    }
+}
