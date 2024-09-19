@@ -1,7 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using DataTracker.Utility;
+using ExcelParser;
 
-namespace ExcelParser
+namespace DataTracker.Internal
 {
     public class VehicleFuelStatistics
     {

@@ -1,23 +1,23 @@
-﻿using System.Collections.Generic;
-using System.Reflection;
+﻿using DataTracker.Internal;
+using DataTracker.Utility;
+using ExcelParser;
 using OfficeOpenXml;
 
-namespace ExcelParser.Excel
+namespace DataTracker.Excel
 {
     public class StatisticsFiller
     {
-        private string _sourceFile;
+        private ExcelFileManager _excelFileManager;
 
-        public StatisticsFiller(string sourceFile)
+        public StatisticsFiller(ExcelFileManager manager)
         {
-            _sourceFile = sourceFile;
+            _excelFileManager = manager;
         }
 
         public void FillStatistics()
         {
             Logger.Log("Loading excel file...");
-            ExcelFileManager fileManager = new ExcelFileManager(_sourceFile);
-            ExcelPackage package = fileManager.LoadExcelFile();
+            ExcelPackage package = _excelFileManager.Package;
             ExcelWorkbook workbook = package.Workbook;
             List<VehicleFuelStatistics> stats = new List<VehicleFuelStatistics>();
             
@@ -36,7 +36,7 @@ namespace ExcelParser.Excel
                 Logger.Log(vehicle.Name + " successfully written");
             }
             
-            fileManager.SaveExcelFile(package);
+            //_excelFileManager.SaveExcelFile(package);
         }
 
         private void TransferDataFromWorksheet(ExcelWorksheet worksheet, VehicleFuelStatistics statistics)

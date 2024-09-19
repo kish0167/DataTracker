@@ -1,17 +1,20 @@
-﻿using System.IO;
+﻿using DataTracker.Utility;
 using OfficeOpenXml;
 
-namespace ExcelParser.Excel
+namespace DataTracker.Excel
 {
     public class ExcelFileManager
     {
         private string _sourceFilePath;
         private string _archiveFilePath;
+        private ExcelPackage _package;
 
-        public ExcelFileManager(string sourcePath, string archivePath)
+        public ExcelPackage Package => _package;
+
+        public ExcelFileManager(string sourcePath, string archiveFolder)
         {
             _sourceFilePath = sourcePath;
-            _archiveFilePath = archivePath;
+            _archiveFilePath = Path.Combine(archiveFolder, DateTime.Now.ToString("yyyy-MM-dd-hh-mm-ss") + ".xlsx");
         }
 
         public ExcelFileManager(string sourcePath)
@@ -19,33 +22,32 @@ namespace ExcelParser.Excel
             _sourceFilePath = sourcePath;
             _archiveFilePath = "none";
         }
-
-        // Loads the Excel file
-        public ExcelPackage LoadExcelFile()
+        
+        public void LoadExcelFile()
         {
-            var package = new ExcelPackage(new FileInfo(_sourceFilePath));
+            _package = new ExcelPackage(new FileInfo(_sourceFilePath));
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
-            return package;
+            Logger.Log(_sourceFilePath + " loaded.");
         }
-
-        // Archives the data to a new file
-        public void ArchiveData(ExcelPackage sourcePackage)
+        
+        public void ArchiveData()
         {
             using (var archivePackage = new ExcelPackage(new FileInfo(_archiveFilePath)))
             {
-                foreach (var sourceWorksheet in sourcePackage.Workbook.Worksheets)
+                foreach (var sourceWorksheet in Package.Workbook.Worksheets)
                 {
-                    // Clone the worksheet into the archive package
                     archivePackage.Workbook.Worksheets.Add(sourceWorksheet.Name, sourceWorksheet);
                 }
-                // Save the archive file
+
                 archivePackage.Save();
+                Logger.Log(_archiveFilePath + " saved.");
             }
         }
 
-        public void SaveExcelFile(ExcelPackage package)
+        public void SaveExcelFile()
         {
-            package.Save();
+            _package.Save();
+            Logger.Log(_sourceFilePath + " saved.");
         }
     }
 }

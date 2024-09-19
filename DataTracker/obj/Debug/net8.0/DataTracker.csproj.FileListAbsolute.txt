@@ -36,3 +36,4 @@ D:\Work projects\DataTracker\DataTracker\bin\Debug\net8.0\System.Security.Crypto
 D:\Work projects\DataTracker\DataTracker\bin\Debug\net8.0\runtimes\win\lib\net7.0\Microsoft.Win32.SystemEvents.dll
 D:\Work projects\DataTracker\DataTracker\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Drawing.Common.dll
 D:\Work projects\DataTracker\DataTracker\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.Security.Cryptography.Pkcs.dll
+D:\Work projects\DataTracker\DataTracker\obj\Debug\net8.0\DataTracker.sourcelink.json

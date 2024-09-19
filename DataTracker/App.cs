@@ -1,35 +1,32 @@
-﻿using System;
-using System.Net.Http.Json;
-using System.Text.Json;
+﻿using DataTracker.BelTransSat;
+using DataTracker.Excel;
 using ExcelParser.BelTransSat;
-using ExcelParser.Excel;
-using ExcelParser.Properties;
 
-namespace ExcelParser
+namespace DataTracker
 {
     static class App
     {
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
             ExcelSettings.LoadSettings();
+            ExcelFileManager excelFileManager = new ExcelFileManager(ExcelSettings.SourceFileLocation,ExcelSettings.ArchieveFolder);
+            excelFileManager.LoadExcelFile();
             
-            MonthlyFileUpdater updater = new MonthlyFileUpdater(ExcelSettings.SourceFileLocation, ExcelSettings.ArchieveFolder);
+            excelFileManager.ArchiveData();
+            
+            MonthlyFileUpdater updater = new MonthlyFileUpdater(excelFileManager);
             //updater.Update();
 
-            StatisticsFiller statisticsFiller = new StatisticsFiller(ExcelSettings.SourceFileLocation);
+            StatisticsFiller statisticsFiller = new StatisticsFiller(excelFileManager);
             //statisticsFiller.FillStatistics();
+
+            SatDataFiller satDataFiller = new SatDataFiller(excelFileManager);
+            await satDataFiller.Fill();
             
-            
+            excelFileManager.SaveExcelFile();
             Console.Beep();
             Console.ReadKey();
         }
     }
     
-    public class JsonDeserializer
-    {
-        public static Root DeserializeJson(string jsonString)
-        {
-            return JsonSerializer.Deserialize<Root>(jsonString);
-        }
-    }
 }

@@ -1,29 +1,24 @@
-﻿using System;
+﻿using DataTracker.Utility;
+using ExcelParser;
 using OfficeOpenXml;
 
-namespace ExcelParser.Excel
+namespace DataTracker.Excel
 {
     public class MonthlyFileUpdater
     {
-        private string _sourceFile;
-        private string _archiveFolder;
-
-        public MonthlyFileUpdater(string sourceFile, string archiveFolder)
+        private ExcelFileManager _excelFileManager;
+        public MonthlyFileUpdater(ExcelFileManager manager)
         {
-            _sourceFile = sourceFile;
-            _archiveFolder = archiveFolder;
+            _excelFileManager = manager;
         }
         
         public void Update()
         {
             Logger.Log("Starting updating process...");
-            string _archieveFile = _archiveFolder + DateTime.Now.ToString("yyyy-MM-dd-hh-mm-ss") + ".xlsx";
-            ExcelFileManager fileManager = new ExcelFileManager(_sourceFile, _archieveFile);
-            ExcelPackage package = fileManager.LoadExcelFile();
-            ExcelWorkbook workbook = package.Workbook;
+            ExcelWorkbook workbook = _excelFileManager.Package.Workbook;
 
             // Archive data
-            fileManager.ArchiveData(package);
+            _excelFileManager.ArchiveData();
             Logger.Log("Data archived.");
 
             // Clean old data
@@ -35,10 +30,6 @@ namespace ExcelParser.Excel
             DateUpdater dateUpdater = new DateUpdater();
             dateUpdater.UpdateDates(workbook);
             Logger.Log("Dates updated.");
-
-            // Save the cleaned and updated file
-            fileManager.SaveExcelFile(package);
-            Logger.Log("File saved.");
 
             Logger.Log("Updating complete.");
         }

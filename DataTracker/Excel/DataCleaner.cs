@@ -1,6 +1,6 @@
 ﻿using OfficeOpenXml;
 
-namespace ExcelParser.Excel
+namespace DataTracker.Excel
 {
     public class DataCleaner
     {

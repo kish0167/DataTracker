@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace ExcelParser
+﻿namespace DataTracker.Utility
 {
     public class Logger
     {

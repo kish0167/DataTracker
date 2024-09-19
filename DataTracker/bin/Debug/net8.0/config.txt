@@ -5,5 +5,9 @@ TravelDistancesCells-F5:F27
 RefuelsDataCells-D5:D27
 ConsumptionDataCells-I5:I27
 NameCells-A2
-SourceFileLocation-D:/files/Учет топлива 0.4.xlsx
+SatTravelCells-A31:A53
+SatConsumptionCells-B31:B53
+SatRefuelsCells-C31:C53
+SatTagCell-A1
+SourceFileLocation-D:/files/Учет топлива 0.5.xlsx
 ArchiveFolder-D:/files/

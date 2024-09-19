@@ -1,7 +1,6 @@
-﻿using System;
-using OfficeOpenXml;
+﻿using OfficeOpenXml;
 
-namespace ExcelParser.Excel
+namespace DataTracker.Excel
 {
     public class DateUpdater
     {

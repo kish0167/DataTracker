@@ -1,7 +1,6 @@
-﻿using System.IO;
-using System.Reflection;
+﻿using System.Reflection;
 
-namespace ExcelParser.Properties
+namespace DataTracker.Utility
 {
     public class TxtHandler
     {
