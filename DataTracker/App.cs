@@ -15,10 +15,10 @@ namespace DataTracker
             excelFileManager.ArchiveData();
             
             MonthlyFileUpdater updater = new MonthlyFileUpdater(excelFileManager);
-            //updater.Update();
+            updater.Update();
 
             StatisticsFiller statisticsFiller = new StatisticsFiller(excelFileManager);
-            //statisticsFiller.FillStatistics();
+            statisticsFiller.FillStatistics();
 
             SatDataFiller satDataFiller = new SatDataFiller(excelFileManager);
             await satDataFiller.Fill();

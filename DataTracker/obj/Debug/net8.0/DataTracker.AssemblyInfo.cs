@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DataTracker")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0d3dba1156d8478e8d81c0d65b4ed22b4c529d53")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8b511ba20b51e989b517938f30328c46970fdc4c")]
 [assembly: System.Reflection.AssemblyProductAttribute("DataTracker")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DataTracker")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

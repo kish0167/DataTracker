@@ -84,15 +84,21 @@ namespace DataTracker.Excel
 
         
         public const int Rows = 23;
+        public static readonly DateTime originDate = new DateTime(2024, 1, 1);
 
         public static bool IsVehicleSheet(ExcelWorksheet worksheet)
         {
             return worksheet.Cells[_locationsInExcel[(int)ConfigTypes.NameCells]].Value != null;
         }
         
-        public static bool IsSatVehicleSheet(ExcelWorksheet worksheet)
+        public static bool IsSatDefaultVehicleSheet(ExcelWorksheet worksheet)
         {
-            return IsVehicleSheet(worksheet) && worksheet.Cells[_locationsInExcel[(int)ConfigTypes.SatTagCell]].Value != null;
+            return IsVehicleSheet(worksheet) && worksheet.Cells[_locationsInExcel[(int)ConfigTypes.SatTagCell]].GetCellValue<string>() == "sat-default";
+        }
+        
+        public static bool IsSatSpecialVehicleSheet(ExcelWorksheet worksheet)
+        {
+            return IsVehicleSheet(worksheet) && worksheet.Cells[_locationsInExcel[(int)ConfigTypes.SatTagCell]].GetCellValue<string>() == "sat-special";
         }
 
 

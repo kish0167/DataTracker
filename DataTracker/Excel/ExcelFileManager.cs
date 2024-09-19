@@ -14,7 +14,7 @@ namespace DataTracker.Excel
         public ExcelFileManager(string sourcePath, string archiveFolder)
         {
             _sourceFilePath = sourcePath;
-            _archiveFilePath = Path.Combine(archiveFolder, DateTime.Now.ToString("yyyy-MM-dd-hh-mm-ss") + ".xlsx");
+            _archiveFilePath = Path.Combine(archiveFolder, DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss") + ".xlsx");
         }
 
         public ExcelFileManager(string sourcePath)

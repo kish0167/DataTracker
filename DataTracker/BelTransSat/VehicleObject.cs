@@ -67,6 +67,16 @@ namespace ExcelParser.BelTransSat
             
             return (DistanceCan + DistanceGps) / 2000;
         }
+        
+        public double? GetFuelUsed()
+        {
+            if (FuelDut == 0 || FuelCan == 0)
+            {
+                return FuelDut + FuelCan;
+            } 
+            
+            return (FuelDut + FuelCan) / 2;
+        }
     }
 
     public class RootObject

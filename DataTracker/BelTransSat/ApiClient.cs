@@ -19,6 +19,7 @@ public class ApiClient
     {
         _httpClient = new HttpClient();
         _token = token;
+        _responsesPool = new List<Response>();
     }
 
     public async Task<RootObject> GetVehiclesInfo(DateTime date)
@@ -39,7 +40,7 @@ public class ApiClient
         
         if (response.IsSuccessStatusCode)
         {
-            Logger.Log("\tResponse acquired for date: " + date.ToString("MM-dd"));
+            Logger.Log("\tResponse acquired for date: " + date.ToString("yyyy-MM-dd"));
             string jsonResponse = await response.Content.ReadAsStringAsync();
             RootObject rootObject = JsonSerializer.Deserialize<RootObject>(jsonResponse);
             _responsesPool.Add(new Response(date,rootObject));

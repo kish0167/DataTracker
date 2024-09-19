@@ -12,8 +12,11 @@ namespace DataTracker.Excel
                 {
                     continue;
                 }   
-                ExcelSettings.NumericDataCells(worksheet).Value = null;
-                ExcelSettings.ConstructionSitesCells(worksheet).Value = "-";
+                //ExcelSettings.NumericDataCells(worksheet).Value = null;   TODO:   DONT FORGET
+                //ExcelSettings.ConstructionSitesCells(worksheet).Value = "-";
+                ExcelSettings.ConsumptionDataCells(worksheet).Value = 0;
+                ExcelSettings.SatTravelCells(worksheet).Value = 0;
+                ExcelSettings.SatConsumptionCells(worksheet).Value = 0;
                 ExcelSettings.ConsumptionDataCells(worksheet).Value = 0;
             }
         }

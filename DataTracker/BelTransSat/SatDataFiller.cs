@@ -34,7 +34,7 @@ public class SatDataFiller
 
         foreach (var worksheet in package.Workbook.Worksheets)
         {
-            if (!ExcelSettings.IsSatVehicleSheet(worksheet))
+            if (!ExcelSettings.IsSatDefaultVehicleSheet(worksheet))
             {
                 continue;
             }
@@ -49,6 +49,12 @@ public class SatDataFiller
                 string vehicleName = ExcelSettings.NameCell(worksheet).GetCellValue<string>();
 
                 currentDate = ExcelSettings.DateCells(worksheet).GetCellValue<DateTime>(i, 0);
+                
+                if (!IsValidDate(currentDate))
+                {
+                    continue;
+                }
+                
                 SatDataObject = await client.GetVehiclesInfo(currentDate);
 
                 if (!_vehiclesDictionary.TryGetValue(vehicleName, out string id))
@@ -60,7 +66,7 @@ public class SatDataFiller
                 VehicleObject vehicle = SatDataObject.FindWithId(id);
                 
                 ExcelSettings.SatTravelCells(worksheet).TakeSingleCell(i, 0).Value = vehicle.GetTravelDistance();
-                ExcelSettings.SatConsumptionCells(worksheet).TakeSingleCell(i, 0).Value = vehicle.FuelDut;
+                ExcelSettings.SatConsumptionCells(worksheet).TakeSingleCell(i, 0).Value = vehicle.GetFuelUsed();
             }
         }
     }
@@ -74,5 +80,10 @@ public class SatDataFiller
     private string GetTokenFromFile()
     {
         return TxtHandler.ReadFile("token.txt");
+    }
+
+    private bool IsValidDate(DateTime date)
+    {
+        return DateTime.Compare(date, DateTime.Today) < 0 && DateTime.Compare(date, ExcelSettings.originDate) >= 0;
     }
 }
